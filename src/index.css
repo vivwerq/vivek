@@ -1,0 +1,109 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: 240 10% 3.9%;
+  --foreground: 0 0% 98%;
+  
+  --card: 240 10% 3.9%;
+  --card-foreground: 0 0% 98%;
+  
+  --popover: 240 10% 3.9%;
+  --popover-foreground: 0 0% 98%;
+  
+  --primary: 142 70.6% 45.3%;
+  --primary-foreground: 144.9 80.4% 10%;
+  
+  --secondary: 328 73% 41%;
+  --secondary-foreground: 0 0% 98%;
+  
+  --muted: 240 3.7% 15.9%;
+  --muted-foreground: 240 5% 64.9%;
+  
+  --accent: 264 67% 51%;
+  --accent-foreground: 0 0% 98%;
+  
+  --destructive: 0 62.8% 30.6%;
+  --destructive-foreground: 0 0% 98%;
+  
+  --border: 240 3.7% 15.9%;
+  --input: 240 3.7% 15.9%;
+  --ring: 142 70.6% 45.3%;
+  
+  --radius: 0.5rem;
+
+  --hacker-background: 240 10% 3.9%;
+  --hacker-primary: 142 70.6% 45.3%;
+  --hacker-secondary: 328 73% 41%;
+  --hacker-accent: 264 67% 51%;
+  --hacker-muted: 240 3.7% 15.9%;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground font-inter;
+  }
+}
+
+@layer components {
+  .glass {
+    @apply bg-black/30 backdrop-blur-md border border-white/10;
+  }
+  
+  .btn-primary {
+    @apply px-6 py-3 bg-hacker-primary text-black font-semibold rounded hover:bg-opacity-90 transition-all duration-200;
+  }
+  
+  .btn-secondary {
+    @apply px-6 py-3 bg-hacker-secondary text-white font-semibold rounded hover:bg-opacity-90 transition-all duration-200;
+  }
+  
+  .nav-link {
+    @apply text-gray-300 hover:text-white relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-hacker-primary after:transition-all after:duration-300 hover:after:w-full;
+  }
+  
+  .neon-text {
+    @apply text-white relative;
+    text-shadow: 0 0 5px hsl(var(--hacker-primary)), 0 0 10px hsl(var(--hacker-primary));
+  }
+  
+  .animate-glow {
+    animation: glow 1.5s ease-in-out infinite alternate;
+  }
+  
+  .animate-fadeIn {
+    animation: fadeIn 0.3s ease-in-out;
+  }
+}
+
+@keyframes glow {
+  from {
+    text-shadow: 0 0 5px hsl(var(--hacker-primary)), 0 0 10px hsl(var(--hacker-primary));
+  }
+  to {
+    text-shadow: 0 0 10px hsl(var(--hacker-primary)), 0 0 20px hsl(var(--hacker-primary)), 0 0 30px hsl(var(--hacker-primary));
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.font-inter {
+  font-family: 'Inter', sans-serif;
+}
+
+.font-mono {
+  font-family: 'JetBrains Mono', monospace;
+}
